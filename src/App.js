@@ -1,35 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";  // Ensure the path is correct
-import Login from "./pages/Login";          // Ensure the path is correct
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
+      {/* Navigation Bar */}
+      <nav className="w-full bg-blue-600 p-4 flex justify-between text-white">
+        <Link to="/" className="text-lg font-bold">CMS Dashboard</Link>
+        <div>
+          <Link to="/login" className="mr-4">Login</Link>
+        </div>
+      </nav>
 
-        {/* Routes for Login and Dashboard */}
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </div>
-    </Router>
+      {/* Routing */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   );
 }
 
